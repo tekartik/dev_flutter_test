@@ -11,5 +11,7 @@ Future testFlutterDir(String dir, {List<String> analyzerDir}) async {
 }
 
 Future main() async {
-  await testFlutterDir('.', analyzerDir: ['lib', 'test']);
+  await runCmd(dartCmd(['--version']));
+  await runCmd(flutterCmd(['--version']));
+  await testFlutterDir(null, analyzerDir: ['lib', 'test']);
 }
