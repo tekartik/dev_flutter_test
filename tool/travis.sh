@@ -4,5 +4,7 @@
 # and print line as they are read
 set -ev
 
+flutter --version
+dart --version
 flutter packages get
-dart 'tool/test_flutter.dart';
+dart 'tool/test_flutter.dart'
