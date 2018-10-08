@@ -12,6 +12,20 @@ Future testFlutterDir(String dir, {List<String> analyzerDir}) async {
 
 Future main() async {
   await runCmd(dartCmd(['--version']));
-  await runCmd(flutterCmd(['--version']));
+  try {
+    await runCmd(flutterCmd(['--version']));
+  } catch (e) {
+    print(e);
+  }
+  try {
+    await runCmd(ProcessCmd('flutter', ['--version']));
+  } catch (e) {
+    print(e);
+  }
+  try {
+    await runCmd(ProcessCmd('flutter', ['--version'], runInShell: true));
+  } catch (e) {
+    print(e);
+  }
   await testFlutterDir(null, analyzerDir: ['lib', 'test']);
 }
