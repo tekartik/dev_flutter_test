@@ -3,13 +3,13 @@ import 'package:tekartik_build_utils/common_import.dart';
 
 Future testFlutterDir(String dir, {List<String> analyzerDir}) async {
   analyzerDir ??= ['lib'];
-  await runCmd(flutterCmd(['packages', 'get'])..workingDirectory = dir);
+  await runCmd(FlutterCmd(['packages', 'get'])..workingDirectory = dir);
   // '--fatal-warnings', '--fatal-infos'
   await runCmd(
-      flutterCmd(['analyze']..addAll(analyzerDir))..workingDirectory = dir);
-  await runCmd(flutterCmd(['test'])..workingDirectory = dir);
+      FlutterCmd(['analyze']..addAll(analyzerDir))..workingDirectory = dir);
+  await runCmd(FlutterCmd(['test'])..workingDirectory = dir);
 }
 
 Future main() async {
-  await testFlutterDir('.', analyzerDir: ['lib', 'test']);
+  await testFlutterDir(null, analyzerDir: ['lib', 'test']);
 }
