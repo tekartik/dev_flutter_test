@@ -24,13 +24,15 @@ class FlutterTest implements Test {
       skip,
       @deprecated bool solo = false,
       Map<String, dynamic> onPlatform}) {
-    _impl.test(description, body,
-        testOn: testOn,
-        timeout: timeout,
-        skip: skip,
-        onPlatform: onPlatform,
-        // ignore: deprecated_member_use
-        solo: solo);
+    _impl.test(
+      description, body,
+      testOn: testOn,
+      timeout: timeout,
+      skip: skip,
+      onPlatform: onPlatform,
+      // ignore: deprecated_member_use
+      // solo: solo
+    );
   }
 
   @override
@@ -40,13 +42,15 @@ class FlutterTest implements Test {
       skip,
       @deprecated bool solo = false,
       Map<String, dynamic> onPlatform}) {
-    _impl.group(description, body,
-        testOn: testOn,
-        timeout: timeout,
-        skip: skip,
-        onPlatform: onPlatform,
-        // ignore: deprecated_member_use
-        solo: solo);
+    _impl.group(
+      description, body,
+      // testOn: testOn,
+      // timeout: timeout,
+      // skip: skip,
+      // onPlatform: onPlatform,
+      // ignore: deprecated_member_use
+      // solo: solo
+    );
   }
 
   @override
