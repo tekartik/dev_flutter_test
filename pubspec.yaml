@@ -1,11 +1,11 @@
 name: dev_flutter_test
 description: dev_test implementation for flutter
-version: 0.1.0
+version: 0.2.0
 author:
 homepage:
 
 environment:
-  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+  sdk: ">=2.1.0-dev <3.0.0"
 
 dependencies:
   flutter:
@@ -20,7 +20,7 @@ dev_dependencies:
     git:
       url: git://github.com/tekartik/build_utils.dart
       ref: dart2
-    version: '>=0.3.4'
+    version: '>=0.6.5'
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
