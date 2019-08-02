@@ -12,9 +12,10 @@ pubspec.lock
 # If you don't generate documentation locally you can remove this line.
 doc/api/
 
-# Intellij
+android/
+ios/
+
+# IDE
 .idea/
 *.iml
-
-/android/
-/ios/
+.vscode/

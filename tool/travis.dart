@@ -1,16 +1,20 @@
 import 'package:process_run/shell.dart';
 
-// import 'test_flutter.dart' as test_flutter;
+Future main() async {
+  var shell = Shell();
 
-Future<void> main() async {
-  final Shell shell = Shell();
+  await shell.run('flutter doctor');
 
-  await shell.run('''
-
-flutter analyze
-flutter test
-
-''');
-
-  // await test_flutter.main();
+  for (var dir in [
+    'dev_flutter_test',
+  ]) {
+    shell = shell.pushd(dir);
+    await shell.run('''
+    
+    flutter packages get
+    dart tool/travis.dart
+    
+        ''');
+    shell = shell.popd();
+  }
 }
