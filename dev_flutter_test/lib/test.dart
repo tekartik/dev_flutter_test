@@ -18,7 +18,7 @@ void initFlutterTest() {
 
 class FlutterTest implements Test {
   @override
-  void test(String description, body(),
+  void test(String description, dynamic Function() body,
       {String testOn,
       Timeout timeout,
       skip,
@@ -36,7 +36,7 @@ class FlutterTest implements Test {
   }
 
   @override
-  void group(String description, void body(),
+  void group(String description, void Function() body,
       {String testOn,
       Timeout timeout,
       skip,
@@ -54,22 +54,22 @@ class FlutterTest implements Test {
   }
 
   @override
-  void setUp(callback()) {
+  void setUp(dynamic Function() callback) {
     _impl.setUp(callback);
   }
 
   @override
-  void tearDown(callback()) {
+  void tearDown(dynamic Function() callback) {
     _impl.tearDown(callback);
   }
 
   @override
-  void setUpAll(callback()) {
+  void setUpAll(dynamic Function() callback) {
     _impl.setUpAll(callback);
   }
 
   @override
-  void tearDownAll(callback()) {
+  void tearDownAll(dynamic Function() callback) {
     _impl.tearDownAll(callback);
   }
 
