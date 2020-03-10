@@ -1,11 +1,11 @@
 name: dev_flutter_test
 description: dev_test implementation for flutter
-version: 0.2.1
+version: 0.3.0
 author:
 homepage:
 
 environment:
-  sdk: ">=2.1.0-dev <3.0.0"
+  sdk: ">=2.7.0-dev <3.0.0"
 
 dependencies:
   flutter:
