@@ -1,6 +1,6 @@
 name: tekartik_dev_flutter_test_repo
 description: test_menu_flutter repo
-version: 0.1.0
+version: 0.1.1
 homepage: https://github.com/tekartik/sqflite
 author: alex <alex@tekartik.com>
 publish_to: none
@@ -14,7 +14,7 @@ dev_dependencies:
     git:
       url: git://github.com/tekartik/travis_ci_flutter.dart
       ref: dart2
-    version: '>=0.1.0'
+    version: '>=0.2.2'
   process_run: '>=0.10.2'
   tekartik_common_utils:
     git:
