@@ -1,0 +1,26 @@
+name: dev_flutter_test_repo_support
+description: Dev flutter test repo (tools)
+version: 0.2.0
+publish_to: none
+
+environment:
+  sdk: '>=2.10.0-0 <3.0.0'
+
+dev_dependencies:
+  path:
+  pub_semver:
+  tekartik_common_utils:
+    git:
+      url: git://github.com/tekartik/common_utils.dart
+      ref: dart2
+    version: '>=0.9.8'
+  tekartik_travis_ci_flutter:
+    git:
+      url: git://github.com/tekartik/travis_ci_flutter.dart
+      ref: dart2
+    version: '>=0.1.0'
+  test:
+  dev_test:
+  pedantic:
+
+

@@ -1,3 +1,4 @@
+import 'package:path/path.dart';
 import 'package:process_run/shell.dart';
 
 Future main() async {
@@ -8,7 +9,7 @@ Future main() async {
   for (var dir in [
     'dev_flutter_test',
   ]) {
-    shell = shell.pushd(dir);
+    shell = shell.pushd(join('..', dir));
     await shell.run('''
     
     flutter packages get
