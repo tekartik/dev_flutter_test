@@ -1,16 +1,17 @@
 // for flutter
 
 // ignore: implementation_imports
-import 'package:dev_test/src/dev_test.dart' show Test, testImplementation;
+import 'package:dev_test/src/description_test.dart' show WithDescriptionsTest;
 
 // ignore: implementation_imports
-import 'package:dev_test/src/description_test.dart' show WithDescriptionsTest;
-import 'package:flutter_test/flutter_test.dart' as _impl;
+import 'package:dev_test/src/dev_test.dart' show Test, testImplementation;
 import 'package:dev_test/test.dart' show Timeout;
-export 'package:flutter_test/flutter_test.dart'
-    hide expect, test, group, setUp, tearDown, setUpAll, tearDownAll;
+import 'package:flutter_test/flutter_test.dart' as _impl;
+
 export 'package:dev_test/test.dart'
     show expect, test, group, setUp, tearDown, setUpAll, tearDownAll;
+export 'package:flutter_test/flutter_test.dart'
+    hide expect, test, group, setUp, tearDown, setUpAll, tearDownAll;
 
 void initFlutterTest() {
   testImplementation = WithDescriptionsTest(FlutterTest());
