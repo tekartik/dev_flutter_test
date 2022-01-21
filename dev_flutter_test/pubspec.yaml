@@ -16,7 +16,7 @@ dependencies:
 dev_dependencies:
   tekartik_build_utils:
     git:
-      url: git://github.com/tekartik/build_utils.dart
+      url: https://github.com/tekartik/build_utils.dart
       ref: dart2
     version: '>=0.6.5'
   process_run: '>=0.10.2'
