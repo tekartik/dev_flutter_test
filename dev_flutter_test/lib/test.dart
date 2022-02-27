@@ -20,11 +20,11 @@ void initFlutterTest() {
 class FlutterTest implements Test {
   @override
   void test(String description, dynamic Function() body,
-      {String testOn,
-      Timeout timeout,
+      {String? testOn,
+      Timeout? timeout,
       skip,
-      @deprecated bool solo = false,
-      Map<String, dynamic> onPlatform}) {
+      @Deprecated('Dev only') bool solo = false,
+      Map<String, dynamic>? onPlatform}) {
     _impl.test(
       description, body,
       testOn: testOn,
@@ -38,11 +38,11 @@ class FlutterTest implements Test {
 
   @override
   void group(String description, void Function() body,
-      {String testOn,
-      Timeout timeout,
+      {String? testOn,
+      Timeout? timeout,
       skip,
-      @deprecated bool solo = false,
-      Map<String, dynamic> onPlatform}) {
+      @Deprecated('Dev only') bool solo = false,
+      Map<String, dynamic>? onPlatform}) {
     _impl.group(
       description, body,
       // testOn: testOn,
@@ -75,7 +75,7 @@ class FlutterTest implements Test {
   }
 
   @override
-  void expect(actual, matcher, {String reason, skip}) {
+  void expect(actual, matcher, {String? reason, skip}) {
     _impl.expect(actual, matcher, reason: reason, skip: skip);
   }
 }

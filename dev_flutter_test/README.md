@@ -9,7 +9,7 @@ dev_dependencies
   dev_flutter_test:
     git:
       url: https://github.com/tekartik/dev_flutter_test
-      ref: dart2
+      ref: dart2_3
 ```
 
 
