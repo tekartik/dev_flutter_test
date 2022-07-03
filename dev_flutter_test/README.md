@@ -8,8 +8,8 @@ Flutter implementation of dev_test to share common test for VM, browser and flut
 dev_dependencies
   dev_flutter_test:
     git:
-      url: git://github.com/tekartik/dev_flutter_test
-      ref: dart2
+      url: https://github.com/tekartik/dev_flutter_test
+      ref: dart2_3
 ```
 
 

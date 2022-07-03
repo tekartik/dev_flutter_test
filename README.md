@@ -11,8 +11,8 @@ pubspec.yaml:
 dev_dependencies:
   dev_flutter_test:
     git:
-      url: git://github.com/tekartik/dev_flutter_test
-      ref: dart2
+      url: https://github.com/tekartik/dev_flutter_test
+      ref: dart2_3
       path: dev_flutter_test
     version: '>=0.2.1'
   ...
