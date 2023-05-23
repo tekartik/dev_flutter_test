@@ -1,12 +1,13 @@
 //import 'package:tekartik_build_utils/cmd_run.dart';
-import 'package:tekartik_build_utils/common_import.dart';
+import 'package:process_run/process_run.dart';
 
 Future testFlutterDir(String? dir, {List<String>? analyzerDir}) async {
   analyzerDir ??= ['lib'];
-  await runCmd(FlutterCmd(['packages', 'get'])..workingDirectory = dir);
+  var shell = Shell(workingDirectory: dir);
+  await shell.run('flutter pub get');
   // '--fatal-warnings', '--fatal-infos'
-  await runCmd(FlutterCmd(['analyze', ...analyzerDir])..workingDirectory = dir);
-  await runCmd(FlutterCmd(['test'])..workingDirectory = dir);
+  await shell.run('flutter analyze');
+  await shell.run('flutter test');
 }
 
 Future main() async {
