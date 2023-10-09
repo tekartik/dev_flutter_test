@@ -3,7 +3,7 @@ description: dev_test implementation for flutter
 version: 0.3.0
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=3.1.0 <4.0.0'
 
 dependencies:
   flutter:
@@ -14,10 +14,16 @@ dependencies:
     sdk: flutter
 
 dev_dependencies:
-  tekartik_build_utils:
+  tekartik_lints_flutter:
     git:
-      url: https://github.com/tekartik/build_utils.dart
-      ref: dart2_3
+      url: https://github.com/tekartik/common_flutter.dart
+      ref: dart3a
+      path: packages/lints_flutter
+    version: '>=0.1.0'
+  tekartik_common_utils:
+    git:
+      url: https://github.com/tekartik/common_utils.dart
+      ref: dart3a
     version: '>=0.6.5'
   process_run: '>=0.10.2'
 
