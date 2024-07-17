@@ -72,9 +72,4 @@ class FlutterTest implements Test {
   void tearDownAll(dynamic Function() callback) {
     flutter_test.tearDownAll(callback);
   }
-
-  @override
-  void expect(actual, matcher, {String? reason, skip}) {
-    flutter_test.expect(actual, matcher, reason: reason, skip: skip);
-  }
 }
