@@ -3,7 +3,7 @@ description: dev_test implementation for flutter
 version: 0.3.0
 
 environment:
-  sdk: '>=3.4.0 <4.0.0'
+  sdk: ^3.5.0
 
 dependencies:
   flutter:
