@@ -5,11 +5,12 @@ Flutter implementation of dev_test to share common test for VM, browser and flut
 ## Setup
 
 ```yaml
-dev_dependencies
+dev_dependencies:
   dev_flutter_test:
     git:
       url: https://github.com/tekartik/dev_flutter_test
       ref: dart3a
+      path: dev_flutter_test
 ```
 
 
