@@ -3,17 +3,17 @@ description: dev_test implementation for flutter
 version: 0.3.0
 
 environment:
-  sdk: ^3.5.0
+  sdk: ^3.7.0
 
 dependencies:
   flutter:
     sdk: flutter
-  dev_test: '>=1.0.0+2'
+  dev_test: ">=1.0.0+4"
   flutter_test:
     sdk: flutter
 
 dev_dependencies:
-  dev_build:
+  dev_build: ">=1.1.2"
   tekartik_lints_flutter:
     git:
       url: https://github.com/tekartik/common_flutter.dart
@@ -25,7 +25,7 @@ dev_dependencies:
       url: https://github.com/tekartik/common_utils.dart
       ref: dart3a
     version: '>=0.6.5'
-  process_run: '>=0.10.2'
+  process_run: ">=1.2.1+1"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec

@@ -18,14 +18,18 @@ void initFlutterTest() {
 
 class FlutterTest implements Test {
   @override
-  void test(String description, dynamic Function() body,
-      {String? testOn,
-      Timeout? timeout,
-      skip,
-      @Deprecated('Dev only') bool solo = false,
-      Map<String, dynamic>? onPlatform}) {
+  void test(
+    String description,
+    dynamic Function() body, {
+    String? testOn,
+    Timeout? timeout,
+    skip,
+    @Deprecated('Dev only') bool solo = false,
+    Map<String, dynamic>? onPlatform,
+  }) {
     flutter_test.test(
-      description, body,
+      description,
+      body,
       testOn: testOn,
       timeout: timeout,
       skip: skip,
@@ -36,14 +40,18 @@ class FlutterTest implements Test {
   }
 
   @override
-  void group(String description, void Function() body,
-      {String? testOn,
-      Timeout? timeout,
-      skip,
-      @Deprecated('Dev only') bool solo = false,
-      Map<String, dynamic>? onPlatform}) {
+  void group(
+    String description,
+    void Function() body, {
+    String? testOn,
+    Timeout? timeout,
+    skip,
+    @Deprecated('Dev only') bool solo = false,
+    Map<String, dynamic>? onPlatform,
+  }) {
     flutter_test.group(
-      description, body,
+      description,
+      body,
       // testOn: testOn,
       // timeout: timeout,
       // skip: skip,
