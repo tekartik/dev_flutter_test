@@ -3,7 +3,7 @@ description: dev_test implementation for flutter
 version: 0.3.0
 
 environment:
-  sdk: ^3.8.0
+  sdk: ^3.9.0
 
 dependencies:
   flutter:
