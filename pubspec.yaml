@@ -1,0 +1,8 @@
+name: _
+publish_to: none
+environment:
+  sdk: ^3.11.0
+workspace:
+  - dev_flutter_test
+  - examples/dev_flutter_test_example
+  - repo_support

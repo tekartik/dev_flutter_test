@@ -1,16 +1,21 @@
 name: dev_flutter_test
 description: dev_test implementation for flutter
 version: 0.3.0
-
+publish_to: none
 environment:
-  sdk: ^3.9.0
+  sdk: ^3.11.0
 
 dependencies:
+  meta:
   flutter:
     sdk: flutter
-  dev_test: ">=1.0.0+4"
+  dev_test: ">=1.0.2-1"
   flutter_test:
     sdk: flutter
+  tekartik_test_menu_flutter:
+    git:
+      url: https://github.com/tekartik/test_menu_flutter
+      path: test_menu_flutter
 
 dev_dependencies:
   dev_build: ">=1.1.2"
@@ -30,6 +35,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
+resolution: workspace
 
   # To add assets to your package, add an assets section, like this:
   # assets:

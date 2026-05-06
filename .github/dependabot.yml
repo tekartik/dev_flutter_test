@@ -10,6 +10,10 @@ updates:
     schedule:
       interval: "monthly"
   - package-ecosystem: "pub"
+    directory: "examples/dev_flutter_test_example"
+    schedule:
+      interval: "monthly"
+  - package-ecosystem: "pub"
     directory: "repo_support"
     schedule:
       interval: "monthly"

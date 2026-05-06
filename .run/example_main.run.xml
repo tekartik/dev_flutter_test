@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="example_main" type="FlutterRunConfigurationType" factoryName="Flutter">
+    <option name="additionalArgs" value="--web-port 8060" />
+    <option name="filePath" value="$PROJECT_DIR$/examples/dev_flutter_test_example/lib/main.dart" />
+    <method v="2" />
+  </configuration>
+</component>
