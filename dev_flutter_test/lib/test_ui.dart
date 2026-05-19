@@ -39,7 +39,7 @@ class FlutterUiTest with DevTestMixin implements Test {
       description,
       body,
 
-      // ignore: deprecated_member_use
+      // ignore: invalid_use_of_do_not_submit_member
       solo: solo,
     );
   }
@@ -57,7 +57,7 @@ class FlutterUiTest with DevTestMixin implements Test {
     tmf.menu(
       description,
       body,
-      // ignore: deprecated_member_use
+      // ignore: invalid_use_of_do_not_submit_member
       solo: true,
       // testOn: testOn,
       // timeout: timeout,
