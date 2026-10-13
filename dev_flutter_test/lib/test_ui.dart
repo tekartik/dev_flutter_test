@@ -58,13 +58,11 @@ class FlutterUiTest with DevTestMixin implements Test {
       description,
       body,
       // ignore: invalid_use_of_do_not_submit_member
-      solo: true,
+      solo: solo,
       // testOn: testOn,
       // timeout: timeout,
       // skip: skip,
       // onPlatform: onPlatform,
-      // ignore: deprecated_member_use
-      // solo: solo
     );
   }
 

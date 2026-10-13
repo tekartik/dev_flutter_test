@@ -53,9 +53,9 @@ class FlutterTest with DevTestMixin implements Test {
     flutter_test.group(
       description,
       body,
+      skip: skip,
       // testOn: testOn,
       // timeout: timeout,
-      // skip: skip,
       // onPlatform: onPlatform,
       // ignore: deprecated_member_use
       // solo: solo
