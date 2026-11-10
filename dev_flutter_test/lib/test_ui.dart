@@ -1,11 +1,13 @@
-// for flutter
+/// dev_test declarations as an interactive Flutter menu app
+/// ([mainFlutterUiTest], `flutter run`).
+library;
+
 // ignore: implementation_imports
 import 'package:dev_test/src/description_test.dart' show WithDescriptionsTest;
 // ignore: implementation_imports
-import 'package:dev_test/src/dev_test.dart'
-    show Test, testImplementation, DevTestMixin;
-import 'package:dev_test/test.dart' show Timeout;
-import 'package:meta/meta.dart';
+import 'package:dev_test/src/dev_test.dart' show testImplementation;
+// ignore: implementation_imports
+import 'package:dev_test/src/dev_test_menu.dart' show DevTestMenu;
 import 'package:tekartik_test_menu_flutter/test_menu_flutter.dart' as tmf;
 
 export 'package:dev_test/test.dart'
@@ -15,74 +17,28 @@ export 'package:flutter_test/flutter_test.dart'
 export 'package:tekartik_test_menu_flutter/test_menu_flutter.dart'
     show mainMenuFlutter;
 
+/// Declares the dev_test `group`/`test` calls as Flutter test menus and items
+/// ([FlutterUiTest]).
 void initFlutterUiTest() {
   testImplementation = WithDescriptionsTest(FlutterUiTest());
 }
 
+/// Runs the tests declared by [body] as an interactive Flutter menu app
+/// (`flutter run`, not `flutter test`): each `group` is a menu, each `test`
+/// an item.
 void mainFlutterUiTest(void Function() body, {bool? showConsole}) {
   initFlutterUiTest();
   tmf.mainMenuFlutter(body, showConsole: showConsole);
 }
 
-class FlutterUiTest with DevTestMixin implements Test {
-  @override
-  void test(
-    String description,
-    dynamic Function() body, {
-    String? testOn,
-    Timeout? timeout,
-    skip,
-    @doNotSubmit bool solo = false,
-    Map<String, dynamic>? onPlatform,
-  }) {
-    tmf.item(
-      description,
-      body,
-
-      // ignore: invalid_use_of_do_not_submit_member
-      solo: solo,
-    );
-  }
-
-  @override
-  void group(
-    String description,
-    void Function() body, {
-    String? testOn,
-    Timeout? timeout,
-    skip,
-    @Deprecated('Dev only') bool solo = false,
-    Map<String, dynamic>? onPlatform,
-  }) {
-    tmf.menu(
-      description,
-      body,
-      // ignore: invalid_use_of_do_not_submit_member
-      solo: solo,
-      // testOn: testOn,
-      // timeout: timeout,
-      // skip: skip,
-      // onPlatform: onPlatform,
-    );
-  }
-
-  @override
-  void setUp(Object? Function() callback) {
-    tmf.enterItem(callback);
-  }
-
-  @override
-  void tearDown(Object? Function() callback) {
-    tmf.leaveItem(callback);
-  }
-
-  @override
-  void setUpAll(dynamic Function() callback) {
-    tmf.enter(callback);
-  }
-
-  @override
-  void tearDownAll(dynamic Function() callback) {
-    tmf.leave(callback);
-  }
-}
+/// The dev_test implementation of [mainFlutterUiTest], the one of dev_test's
+/// console menu (`mainDevTestMenu`) in the Flutter test menu.
+///
+/// `setUp`/`tearDown` run around each test, those of the parent groups too,
+/// in the package:test order (the setUps outer first, the tearDowns inner
+/// first and in reverse, even after a failure); `setUpAll`/`tearDownAll`
+/// when a group menu is entered and left. `expect` works without a
+/// package:test invoker (in a `flutter run` app), the async matchers and
+/// `expectLater` do not; `skip`, `testOn`, `timeout` and `onPlatform` are
+/// ignored.
+class FlutterUiTest extends DevTestMenu {}

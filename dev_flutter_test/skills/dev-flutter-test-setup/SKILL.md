@@ -50,11 +50,11 @@ its default one targets the `dart test` runner. `dev_flutter_test` installs a
   the whole `flutter_test` API stay available and are unaffected by
   `initFlutterTest()` — mix widget tests and shared `dev_test` tests in one
   file.
-* Parameter caveats of the flutter implementation (read the code before
-  relying on them): `test(...)` forwards `testOn`, `timeout`, `skip` and
-  `onPlatform` to `flutter_test.test`, but `solo` is dropped; `group(...)`
-  **ignores all of them**, including `skip:`. To skip a group under Flutter,
-  skip the individual tests or guard the declaration with an `if`.
+* Parameter caveats of the flutter implementation: `test(...)` forwards
+  `testOn`, `timeout`, `skip` and `onPlatform` to `flutter_test.test`, `solo`
+  is dropped; `group(...)` forwards `skip` only: `flutter_test`'s `group` has
+  no `testOn`, `timeout` nor `onPlatform`, they are dropped. Put them on each
+  test, or guard the declaration with an `if`.
 * `solo_test`, `skip_test`, `solo_group`, `skip_group` and `testDescriptions`
   are not re-exported. Keep them in shared files that import
   `package:dev_test/test.dart`; in a Flutter test file import them explicitly
@@ -68,11 +68,23 @@ its default one targets the `dart test` runner. `dev_flutter_test` installs a
 * Interactive mode (`test_ui.dart`): `mainFlutterUiTest(body, {showConsole})`
   calls `initFlutterUiTest()` and `mainMenuFlutter` from
   `tekartik_test_menu_flutter`, i.e. it `runApp`s a menu: each `group` becomes
-  a menu page, each `test` an item you tap, `setUp`/`tearDown` run around each
-  item and `setUpAll`/`tearDownAll` on menu enter/leave. `showConsole: true`
-  shows the log pane. It is an app: launch it with `flutter run`, on a device
-  or on the web, to run the same suite where the real platform plugins live.
-  Failures (`fail`, `expect`) are reported in the menu instead of aborting.
+  a menu page, each `test` an item you tap. `setUp`/`tearDown` run around each
+  test, those of the parent groups too, in the package:test order (setUps
+  outer first, tearDowns inner first and in reverse, even after a failure);
+  `setUpAll`/`tearDownAll` on menu enter/leave. `showConsole: true` shows the
+  log pane. It is an app: launch it with `flutter run`, on a device or on the
+  web, to run the same suite where the real platform plugins live. Failures
+  (`fail`, `expect`) are reported in the menu instead of aborting.
+  `FlutterUiTest` is dev_test's console menu implementation (`DevTestMenu`),
+  so it behaves like `mainDevTestMenu` (with an older git ref the parent
+  setUps did not run and every `expect` threw `OutsideTestException` in an
+  app: `flutter pub upgrade dev_flutter_test`).
+* Menu limits: `skip`, `testOn`, `timeout` and `onPlatform` are ignored; the
+  async matchers do not work there (`expectLater`, `completion`, `throwsA` and
+  the other `throws...` matchers, which need a package:test invoker): use a
+  `try`/`catch`. For unchanged `package:test` files with full test_api
+  semantics in an app (skip, timeouts, async matchers), use
+  `mainDevTestMenuFlutter` of `package:tekartik_test_menu_flutter/dev_test_menu.dart`.
 * Do not call `initFlutterTest()` in an app that uses `mainFlutterUiTest` (it
   installs the UI implementation itself), and do not mix both libraries in one
   file.
@@ -148,7 +160,7 @@ Future<void> main(List<String> args) async {
 }
 ```
 
-### Skipping under Flutter, where group parameters are ignored
+### Platform specific groups under Flutter
 
 ```dart
 import 'package:dev_flutter_test/test.dart';
@@ -157,12 +169,16 @@ import 'package:flutter/foundation.dart';
 void main() {
   initFlutterTest();
 
-  // `group('x', ..., skip: true)` would be silently ignored: guard instead.
+  // A group takes `skip`, but its `testOn` would be dropped: guard the
+  // declaration, or put `testOn` on each test.
+  group('skipped for now', () {
+    test('never run', () => fail('skipped'));
+  }, skip: 'reason');
   if (!kIsWeb) {
     group('io only', () {
-      test('skipped on web', () {
+      test('target platform', () {
         expect(defaultTargetPlatform, isNotNull);
-      }, skip: false);
+      });
     });
   }
 }
@@ -175,8 +191,10 @@ void main() {
   `package:dev_flutter_test/test.dart`: ambiguous `test`/`group`/`expect`.
 * Forgetting `initFlutterTest()`, so shared `dev_test` declarations keep
   targeting the `dart test` implementation.
-* Passing `skip:`, `timeout:` or `testOn:` to `group(...)` under Flutter and
-  expecting them to apply.
+* Passing `timeout:` or `testOn:` to `group(...)` under Flutter and expecting
+  them to apply (only `skip:` does).
+* Using `throwsA`, `completion` or `expectLater` in a `mainFlutterUiTest`
+  menu: they need a package:test invoker.
 * Running a `dev_flutter_test` file with `dart test`.
 * Calling `mainFlutterUiTest` from a `flutter test` file: it is a `runApp`
   entry point, not a test.

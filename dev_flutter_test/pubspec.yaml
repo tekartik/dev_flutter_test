@@ -9,7 +9,7 @@ dependencies:
   meta: ">=1.18.0"
   flutter:
     sdk: flutter
-  dev_test: ">=1.0.2-1"
+  dev_test: ">=1.0.5"
   flutter_test:
     sdk: flutter
   tekartik_test_menu_flutter:

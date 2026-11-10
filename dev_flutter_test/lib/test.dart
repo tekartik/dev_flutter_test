@@ -1,4 +1,8 @@
-// for flutter
+/// dev_test declarations (`test`, `group`, `setUp`, `expect`...) under
+/// `flutter test`, with the rest of `flutter_test` (`testWidgets`, `find`...).
+///
+/// Call [initFlutterTest] first.
+library;
 
 // ignore: implementation_imports
 import 'package:dev_test/src/description_test.dart' show WithDescriptionsTest;
@@ -13,10 +17,17 @@ export 'package:dev_test/test.dart'
 export 'package:flutter_test/flutter_test.dart'
     hide expect, test, group, setUp, tearDown, setUpAll, tearDownAll;
 
+/// Makes dev_test declare its tests through `flutter_test` ([FlutterTest]):
+/// call it first in the `main` of a `flutter test` file, before any `group`
+/// or `test`.
 void initFlutterTest() {
   testImplementation = WithDescriptionsTest(FlutterTest());
 }
 
+/// The `flutter_test` implementation of dev_test.
+///
+/// A `group` only takes `skip` (`flutter_test`'s `group` has no `testOn`,
+/// `timeout` nor `onPlatform`, they are dropped); `solo` is ignored.
 class FlutterTest with DevTestMixin implements Test {
   @override
   void test(
